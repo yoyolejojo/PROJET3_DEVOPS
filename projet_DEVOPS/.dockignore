@@ -1,0 +1,8 @@
+.tmp/
+.cache/
+.git/
+.env
+Dockerfile
+
+build/
+node_modules/
