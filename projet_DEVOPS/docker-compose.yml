@@ -99,87 +99,87 @@ services:
     depends_on:
       - zookeeper
 
-  # product-consumer:
-  #   image: arthurescriou/product-consumer:1.0.3
-  #   build: ./product-consumer
-  #   container_name: product-consumer
-  #   environment:
-  #     BROKER_1: kafka:9092
-  #     BROKER_2: kafka:9092
-  #     BROKER_3: kafka:9092
-  #     STRAPI_TOKEN: 36e760d3337eaeb42ac6912b90ef4c7a354b723523edfa9a224cd9886a887e2d0bc02ace6875ba2beaec168a53ca76bd7752fff5dfbf28a934d93b5391dc7f0fc84ae7a2f79363cc40df264b093ae740ce52bb9324750a230d8790d837c2c35cff8f81078002dea4c6b0fb4b08226716a6485a2e7bb85fd38f9251e997bc4d94
-  #     STRAPI_URL: ${STRAPI_URL}
-  #     TOPIC: products
-  #     BEGINNING: "false"
-  #     ERROR_TOPIC: errors 
-  #   # ports:
-  #   #   - '9094:9094'
-  #   networks:
-  #     - strapi
-  #   depends_on:
-  #     - strapi
+  product-consumer:
+    image: arthurescriou/product-consumer:1.0.3
+    build: ./product-consumer
+    container_name: product-consumer
+    environment:
+      BROKER_1: kafka:9092
+      BROKER_2: kafka:9092
+      BROKER_3: kafka:9092
+      STRAPI_TOKEN: 36e760d3337eaeb42ac6912b90ef4c7a354b723523edfa9a224cd9886a887e2d0bc02ace6875ba2beaec168a53ca76bd7752fff5dfbf28a934d93b5391dc7f0fc84ae7a2f79363cc40df264b093ae740ce52bb9324750a230d8790d837c2c35cff8f81078002dea4c6b0fb4b08226716a6485a2e7bb85fd38f9251e997bc4d94
+      STRAPI_URL: ${STRAPI_URL}
+      TOPIC: products
+      BEGINNING: "false"
+      ERROR_TOPIC: errors 
+    # ports:
+    #   - '9094:9094'
+    networks:
+      - strapi
+    depends_on:
+      - strapi
 
-  # product-producer:
-  #   image: arthurescriou/product-producer:1.0.0
-  #   container_name: product-producer
-  #   environment:
-  #     BROKER_1: kafka:9092
-  #     BROKER_2: kafka:9092
-  #     BROKER_3: kafka:9092
-  #     STRAPI_TOKEN: ${API_TOKEN_SALT}
-  #     STRAPI_URL: http://strapi:1337
-  #     TOPIC: products
-  #     BEGINNING: "false"
-  #     ERROR_TOPIC: errors
-  #     FILE_NAME: /data/products.csv
-  #   # ports:
-  #   #   - '9095:9095'
-  #   networks:
-  #     - strapi
-  #   volumes:
-  #     - ./products.csv:/data/products.csv
-  #   depends_on:
-  #     - strapi
-
-
-  # event-consumer:
-  #   image: arthurescriou/event-consumer:1.0.0
-  #   container_name: event-consumer
-  #   environment:
-  #     BROKER_1: kafka:9092
-  #     BROKER_2: kafka:9092
-  #     BROKER_3: kafka:9092
-  #     STRAPI_TOKEN: 36e760d3337eaeb42ac6912b90ef4c7a354b723523edfa9a224cd9886a887e2d0bc02ace6875ba2beaec168a53ca76bd7752fff5dfbf28a934d93b5391dc7f0fc84ae7a2f79363cc40df264b093ae740ce52bb9324750a230d8790d837c2c35cff8f81078002dea4c6b0fb4b08226716a6485a2e7bb85fd38f9251e997bc4d94
-  #     STRAPI_URL: http://strapi:1337
-  #     TOPIC: events
-  #     BEGINNING: "false"
-  #     ERROR_TOPIC: errors
-  #   ports:
-  #     - '9096:9096'
-  #   networks:
-  #     - strapi
-  #   depends_on:
-  #     - strapi
+  product-producer:
+    image: arthurescriou/product-producer:1.0.0
+    container_name: product-producer
+    environment:
+      BROKER_1: kafka:9092
+      BROKER_2: kafka:9092
+      BROKER_3: kafka:9092
+      STRAPI_TOKEN: ${API_TOKEN_SALT}
+      STRAPI_URL: http://strapi:1337
+      TOPIC: products
+      BEGINNING: "false"
+      ERROR_TOPIC: errors
+      FILE_NAME: /data/products.csv
+    # ports:
+    #   - '9095:9095'
+    networks:
+      - strapi
+    volumes:
+      - ./products.csv:/data/products.csv
+    depends_on:
+      - strapi
 
 
-  # event-producer:
-  #   image: arthurescriou/event-producer:1.0.3
-  #   container_name: event-producer
-  #   environment:
-  #     BROKER_1: kafka:9092
-  #     BROKER_2: kafka:9092
-  #     BROKER_3: kafka:9092
-  #     TOPIC: events
-  #     ERROR_TOPIC: errors
-  #     FILE_NAME: /data/events.csv
-  #   ports:
-  #     - '9097:9097'
-  #   networks:
-  #     - strapi
-  #   volumes:
-  #     - ./events.csv:/data/events.csv
-  #   depends_on:
-  #     - kafka
+  event-consumer:
+    image: arthurescriou/event-consumer:1.0.0
+    container_name: event-consumer
+    environment:
+      BROKER_1: kafka:9092
+      BROKER_2: kafka:9092
+      BROKER_3: kafka:9092
+      STRAPI_TOKEN: 36e760d3337eaeb42ac6912b90ef4c7a354b723523edfa9a224cd9886a887e2d0bc02ace6875ba2beaec168a53ca76bd7752fff5dfbf28a934d93b5391dc7f0fc84ae7a2f79363cc40df264b093ae740ce52bb9324750a230d8790d837c2c35cff8f81078002dea4c6b0fb4b08226716a6485a2e7bb85fd38f9251e997bc4d94
+      STRAPI_URL: http://strapi:1337
+      TOPIC: events
+      BEGINNING: "false"
+      ERROR_TOPIC: errors
+    ports:
+      - '9096:9096'
+    networks:
+      - strapi
+    depends_on:
+      - strapi
+
+
+  event-producer:
+    image: arthurescriou/event-producer:1.0.3
+    container_name: event-producer
+    environment:
+      BROKER_1: kafka:9092
+      BROKER_2: kafka:9092
+      BROKER_3: kafka:9092
+      TOPIC: events
+      ERROR_TOPIC: errors
+      FILE_NAME: /data/events.csv
+    ports:
+      - '9097:9097'
+    networks:
+      - strapi
+    volumes:
+      - ./events.csv:/data/events.csv
+    depends_on:
+      - kafka
 
   stock-consumer:
     # image: arthurescriou/stock-consumer:1.0.0
@@ -210,7 +210,7 @@ services:
       BROKER_1: kafka:9092
       BROKER_2: kafka:9092
       BROKER_3: kafka:9092
-      TOPIC: stock
+      TOPIC: stock  
       ERROR_TOPIC: errors
       FILE_NAME: /data/stocks.csv
     ports:
@@ -240,9 +240,9 @@ services:
     container_name: mqtt-kafka
     environment:
       BROKER_1: kafka:9092
-      BROKER_2: kafka:9092
+      BROKER_2: kafka:9092  
       BROKER_3: kafka:9092
-      KAFKA_TOPIC: stock
+      KAFKA_TOPIC: stocks
       MQTT_TOPIC: topic
       MQTT_ENDPOINT: 'ws://mosquitto:1883'
     networks:

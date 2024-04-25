@@ -14,3 +14,5 @@ sleep 1
 sudo docker-compose up -d event-consumer
 sleep 10
 sudo docker-compose up -d event-producer
+sudo docker-compose up -d mosquitto 
+sudo docker-compose up -d mqtt-kafka
