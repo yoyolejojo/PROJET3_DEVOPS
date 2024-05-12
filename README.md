@@ -2,7 +2,7 @@ MEBROUK Yohan 21104840
 
 SAVOLSKIY Lev 21241759
 
-# Projet de DEVOPS 2 - S6 - Sorbonne Université
+# Projet de DEVOPS 3 - S6 - Sorbonne Université
 
 ## Explications
 
@@ -10,9 +10,16 @@ Ce projet est une application Strapi déployé a l'aide de Docker
 Objectif : deployé une application Strapi étant composé d'une image Strapi
 d'une base de donnée Postgresql et d'un frontend React.  
 Utilisation de kafka et des plusieurs conteneurs consommateurs et producteurs
+Cette version du projet integre un changement a l'aide d'un composant IOT géré par une interface web
 
 
 ## Spécificité techniques 
+
+Les changements sur Strapi ne se voient pas directement. Le nombre de stock ne change pas, le problème ne vient pas 
+de nous. Après avoir discuté avec les gérants du TD, le problème ne peut pas être reglé par nous.
+Vous pouvez voir les changements si vous allez dans le produit que vous avez modifié. 
+Le champ "last update" aura bien changé, Strapi a donc bien reçu le changement.
+
 
 Pour que le projet fonctionne vous aurez sûrement besoin de regenerer un TOKEN STRAPI
 IL NE FAUT PAS CHANGER LE TOKEN DANS LE .ENV  
@@ -82,6 +89,8 @@ de l'application.
     frontend: strapi-frontend
     zookeeper: zookeeper
     kafka: kafka
+    mosquitto : mosquitto
+    mqqt : mqtt-kafka
     
     conteneurs des consommateurs:
     - product-consumer

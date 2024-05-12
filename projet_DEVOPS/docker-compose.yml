@@ -242,7 +242,7 @@ services:
       BROKER_1: kafka:9092
       BROKER_2: kafka:9092  
       BROKER_3: kafka:9092
-      KAFKA_TOPIC: stocks
+      KAFKA_TOPIC: stock
       MQTT_TOPIC: topic
       MQTT_ENDPOINT: 'ws://mosquitto:1883'
     networks:
